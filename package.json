@@ -1,0 +1,24 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "react tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava 'app/**/*.test.js' --verbose --require ./other/setup-ava-tests.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "css-loader": "^0.18.0",
+    "json-loader": "^0.5.4",
+    "less-loader": "^2.2.3"
+  },
+  "devDependencies": {
+    "css-loader": "^0.18.0",
+    "html-webpack-plugin": "^2.22.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2"
+  }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="RichenUps">
+	<title>Document</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.min.js"></script>
+	<script src="./libs/vue.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+	<link rel="manifest" href="manifest.json">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+<body>
+	<section id="page">
+		<h3 class="text-center margin-bottom margin-bottom--half">Lisää</h3>
+		<div id="app">
+			<div class="users">
+				<i class="material-icons">&#xE5C6;</i>
+				<select id="user-list" v-model="user">
+					<option value=""></option>
+					<option v-for="(value,key) in names">{{key}}</option>
+				</select>
+			</div>
+			<div class="input-container margin-top-bottom">
+				<i class="material-icons">&#xE147;</i>
+				<input type="number" class="input-field" v-model="amount" id="pullups-amount">
+			</div>
+			<h3 class="text-center margin-bottom margin-bottom--half">Setit</h3>
+			<div class="button-group">
+				<button class="button" v-on:click="updateAmount(value.set)" v-for="(value,key) in names" v-if="value.set > 0" v-bind:disabled="user === null">{{value.set}}</button>
+			</div>
+			<div class="button-container">
+				<button class="button" v-on:click="addPullUps()" v-bind:disabled="user === null">Tallenna</button>
+				<i class="material-icons notification-icon" v-bind:class="{add: added}">&#xE8D0;</i>
+			</div>
+		</div>
+		<div id="pullups-list">
+			<div class="user-bar-container margin-top-bottom">
+				<h3 class="text-center margin-bottom margin-bottom--half">Tilanne</h3>
+					<div class="user-bar clearfix" v-for="(value, key) in results">
+						<div class="fill" v-bind:style="'width:' + Math.round((value.amount / total) * 100) + '%'"></div>
+						<div class="name">
+							{{key}}
+						</div>
+						<div class="value">
+							{{value.amount}}
+						</div>
+					</div>
+					<div class="user-bar clearfix text-bold font-large">
+						<div class="fill" style="width:100%"></div>
+						<div class="name">Yhteensä</div>
+						<div class="value">{{total}}</div>
+					</div>
+				</div>
+		</div>
+	</section>
+<script type="text/javascript" src="main_bundle.js"></script></body>
+</html>
